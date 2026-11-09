@@ -53,7 +53,7 @@ const backPath = localizePath('/winners', lang);
       {screenshots.length > 0 && (
         <section class="screenshots" aria-labelledby="screenshots-heading">
           <h3 id="screenshots-heading" class="screenshots__heading">{t('winner.screenshots')}</h3>
-          <ul class:list={['screenshots__gallery', `screenshots__gallery--${screenshotDevice}`]} tabindex="0" aria-label={t('winner.screenshots')}>
+          <ul class:list={['screenshots__gallery', `screenshots__gallery--${screenshotDevice}`, { 'screenshots__gallery--landscape': screenshots.every((s) => s.width > s.height) }]} tabindex="0" aria-label={t('winner.screenshots')}>
             {screenshots.map((screenshot) => (
               <li class="screenshots__item">
                 <div class:list={['device', `device--${screenshotDevice}`]}>
@@ -141,6 +141,8 @@ const backPath = localizePath('/winners', lang);
   .screenshots__gallery:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
   /* Tall iPhone shots would tower over the page at full width. */
   .screenshots__gallery--iphone { max-width: 860px; }
+  /* Landscape shots read too small three across; show two per row. */
+  .screenshots__gallery--landscape { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .screenshots__item { min-width: 0; }
   .device {
     position: relative; background: #101114; border: 2px solid #53565b;
