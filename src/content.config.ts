@@ -22,6 +22,10 @@ const events = defineCollection({
     tags: z.array(z.string()).default([]),
     registerUrl: z.string().url().optional(),
     featured: z.boolean().default(false),
+    /** Expected number of participants, shown in the event info. */
+    expectedAttendees: z.number().int().positive().optional(),
+    /** Organizing team, e.g. { role: '總召', name: '…' }; grouped by role in the event info. */
+    staff: z.array(z.object({ role: z.string(), name: z.string() })).default([]),
   }),
 });
 

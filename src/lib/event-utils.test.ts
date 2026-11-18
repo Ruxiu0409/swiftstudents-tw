@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { splitEvents, hasAnyTag, CAMP_TAGS } from './event-utils';
+import { splitEvents, hasAnyTag, CAMP_TAGS, formatEventDate } from './event-utils';
 
 const ev = (iso: string) => ({ data: { date: new Date(iso) } });
 
@@ -27,5 +27,32 @@ describe('hasAnyTag', () => {
   it('keeps events with any matching tag, case-insensitively', () => {
     const events = [tagged('營隊'), tagged('camp', 'Workshop'), tagged('Meetup'), tagged()];
     expect(hasAnyTag(events, CAMP_TAGS)).toEqual([events[0], events[1]]);
+  });
+});
+
+describe('splitEvents with endDate', () => {
+  it('keeps a multi-day event upcoming while it is running', () => {
+    const running = { data: { date: new Date('2027-01-26'), endDate: new Date('2027-01-28') } };
+    const { upcoming } = splitEvents([running], new Date('2027-01-27T12:00:00Z'));
+    expect(upcoming).toEqual([running]);
+  });
+});
+
+describe('formatEventDate', () => {
+  const opts = { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' } as const;
+
+  it('formats a single day', () => {
+    expect(formatEventDate({ date: new Date('2027-01-26') }, 'en-US', opts)).toBe('January 26, 2027');
+  });
+
+  it('formats a multi-day range', () => {
+    const data = { date: new Date('2027-01-26'), endDate: new Date('2027-01-28') };
+    expect(formatEventDate(data, 'en-US', opts).replace(/\s/g, ' ')).toBe('January 26 – 28, 2027');
+  });
+
+  it('formats a zh-TW range the way people write it', () => {
+    const data = { date: new Date('2027-01-26'), endDate: new Date('2027-01-28') };
+    expect(formatEventDate(data, 'zh-TW', opts)).toBe('2027年1月26日至28日');
+    expect(formatEventDate(data, 'zh-TW', { ...opts, month: 'short' })).toBe('2027年1月26日至28日');
   });
 });

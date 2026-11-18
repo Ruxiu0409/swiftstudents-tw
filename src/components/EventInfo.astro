@@ -1,0 +1,54 @@
+---
+import type { EventEntry } from '../lib/events';
+import { formatEventDate } from '../lib/event-utils';
+import { useTranslations } from '../i18n/utils';
+import type { Lang } from '../i18n/ui';
+
+interface Props { entry: EventEntry; lang: Lang; }
+const { entry, lang } = Astro.props;
+const t = useTranslations(lang);
+const { location, expectedAttendees, staff } = entry.data;
+const date = formatEventDate(entry.data, lang === 'en' ? 'en-US' : 'zh-TW', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
+
+// Keep roles in the order they first appear, e.g. 總召 before 工作人員.
+const staffByRole = new Map<string, string[]>();
+for (const { role, name } of staff) staffByRole.set(role, [...(staffByRole.get(role) ?? []), name]);
+
+const rows: [string, string][] = [
+  [t('info.date'), date],
+  [t('info.location'), location],
+  ...(expectedAttendees ? [[t('info.attendees'), t('info.attendees_value').replace('{n}', String(expectedAttendees))] as [string, string]] : []),
+  ...[...staffByRole].map(([role, names]) => [role, names.join(lang === 'en' ? ', ' : '、')] as [string, string]),
+];
+const detailed = rows.length > 2;
+---
+{detailed ? (
+  <dl class="info">
+    {rows.map(([label, value]) => (
+      <div class="info__row">
+        <dt class="muted">{label}</dt>
+        <dd>{value}</dd>
+      </div>
+    ))}
+  </dl>
+) : (
+  <p class="muted meta">{date} · {location}</p>
+)}
+<style>
+  .meta { margin-top: 0.5rem; }
+  .info {
+    margin: var(--space-3) 0 0; padding: var(--space-1) var(--space-2);
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    display: grid; grid-template-columns: max-content 1fr; column-gap: var(--space-3);
+  }
+  .info__row {
+    grid-column: 1 / -1; display: grid; grid-template-columns: subgrid;
+    padding-block: 0.65rem;
+  }
+  .info__row + .info__row { border-top: 1px solid var(--color-border); }
+  .info dt { font-size: var(--fs-small); padding-top: 0.15em; }
+  .info dd { margin: 0; }
+</style>

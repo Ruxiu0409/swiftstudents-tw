@@ -4,14 +4,15 @@ import { eventSlug } from '../lib/events';
 import { localizePath } from '../i18n/utils';
 import type { Lang } from '../i18n/ui';
 import SwiftMark from './SwiftMark.astro';
+import { formatEventDate } from '../lib/event-utils';
 
 interface Props { entry: EventEntry; lang: Lang; }
 const { entry, lang } = Astro.props;
 const slug = eventSlug(entry);
 const href = localizePath(`/events/${slug}`, lang);
-const dateFmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-TW', {
+const dateFmt = formatEventDate(entry.data, lang === 'en' ? 'en-US' : 'zh-TW', {
   year: 'numeric', month: 'short', day: 'numeric',
-}).format(entry.data.date);
+});
 ---
 <a class="card" href={href}>
   <div class="card__thumb" aria-hidden="true">

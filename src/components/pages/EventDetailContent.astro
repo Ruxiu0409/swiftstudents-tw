@@ -1,28 +1,27 @@
 ---
-import { render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import type { EventEntry } from '../../lib/events';
 import { useTranslations, localizePath } from '../../i18n/utils';
 import type { Lang } from '../../i18n/ui';
 import { SITE } from '../../config';
+import { isCamp, splitEvents } from '../../lib/event-utils';
+import EventInfo from '../EventInfo.astro';
+import EventProse from '../EventProse.astro';
 
 interface Props { lang: Lang; entry: EventEntry; }
 const { lang, entry } = Astro.props;
 const t = useTranslations(lang);
-const { Content } = await render(entry);
-const dateFmt = new Intl.DateTimeFormat(lang === 'en' ? 'en-US' : 'zh-TW', {
-  year: 'numeric', month: 'long', day: 'numeric',
-}).format(entry.data.date);
-const isUpcoming = entry.data.date.getTime() >= new Date().getTime();
-const backPath = localizePath('/events', lang) + (isUpcoming ? '' : '#past');
-const backLabel = t('detail.back_events');
+const isUpcoming = splitEvents([entry]).upcoming.length > 0;
+const camp = isCamp(entry);
+const backPath = localizePath(camp ? '/camps' : '/events', lang) + (isUpcoming ? '' : '#past');
+const backLabel = t(camp ? 'detail.back_camps' : 'detail.back_events');
 ---
 <Layout lang={lang} title={`${entry.data.title} · ${SITE.name}`} description={entry.data.summary}>
   <article class="section">
     <div class="container article">
       <a class="link-accent" href={backPath}>← {backLabel}</a>
       <h1 class="article__title">{entry.data.title}</h1>
-      <p class="muted article__meta">{dateFmt} · {entry.data.location}</p>
+      <EventInfo entry={entry} lang={lang} />
       {entry.data.image && (
         <div class="article__cover">
           <img src={entry.data.image} alt="" loading="lazy" decoding="async" style={entry.data.imagePosition && `object-position: ${entry.data.imagePosition}`} />
@@ -31,23 +30,17 @@ const backLabel = t('detail.back_events');
       {entry.data.registerUrl && (
         <a class="btn btn--primary article__cta" href={entry.data.registerUrl}>{isUpcoming ? t('detail.register') : t('detail.more')}</a>
       )}
-      <div class="prose">
-        <Content />
-      </div>
+      <EventProse entry={entry} />
     </div>
   </article>
 </Layout>
 <style>
   .article { max-width: 720px; }
   .article__title { margin-top: var(--space-3); }
-  .article__meta { margin-top: 0.5rem; }
   .article__cover {
     margin-top: var(--space-3); aspect-ratio: 16 / 9;
     border: 1px solid var(--color-border); border-radius: var(--radius-lg); overflow: hidden;
   }
   .article__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .article__cta { margin-top: var(--space-3); }
-  .prose { margin-top: var(--space-4); }
-  .prose :global(p) { margin-block: var(--space-2); }
-  .prose :global(h2) { font-size: var(--fs-h3); margin-top: var(--space-4); }
 </style>
