@@ -9,7 +9,7 @@ const t = useTranslations(lang);
 ---
 <section class="clubs" aria-label={t('clubs.heading')}>
   <div class="container">
-    <ul class="clubs__row">
+    <ul class="clubs__row" style={`--club-count: ${clubs.length}`}>
       {clubs.map((c) => {
         const Tag = c.url ? 'a' : 'div';
         return (
@@ -28,8 +28,8 @@ const t = useTranslations(lang);
 <style>
   .clubs { padding-block: 0 var(--space-6); text-align: center; }
   .clubs__row {
-    list-style: none; padding: 0; margin: var(--space-4) auto 0; max-width: 720px;
-    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: clamp(0.5rem, 2vw, var(--space-2));
+    list-style: none; padding: 0; margin: var(--space-4) auto 0; max-width: calc(240px * var(--club-count));
+    display: grid; grid-template-columns: repeat(var(--club-count), minmax(0, 1fr)); align-items: start; gap: clamp(0.5rem, 2vw, var(--space-2));
   }
   .clubs__item {
     display: flex; flex-direction: column; align-items: center; gap: 0.2rem;
