@@ -5,9 +5,6 @@ endDate: 2027-01-28
 location: "Apple Regional Training Center"
 summary: "A three-day in-person iOS workshop: talks, a hands-on workshop, a Codex for iOS build day, and a final showcase."
 expectedAttendees: 62
-staff:
-  - { role: "Lead organizer", name: "瑞瑞" }
-  - { role: "Staff", name: "鄧人愷" }
 tags: ["Camp"]
 ---
 
@@ -37,7 +34,6 @@ Three days of talks, hands-on building, and a final showcase — turn your idea 
 | Time | Session |
 | --- | --- |
 | Morning | Open building time, rehearsals |
-| 13:30 | Doors open (bubble tea on us) |
 | 14:00 – 16:30 | Project showcase |
 | From 16:30 | Awards, closing, group photo |
 
