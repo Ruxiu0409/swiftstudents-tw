@@ -14,3 +14,14 @@ export function splitEvents<T extends DatedEntry>(
     .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
   return { upcoming, past };
 }
+
+/** Tags (in either language) that mark an event as a camp. */
+export const CAMP_TAGS = ['營隊', 'Camp'];
+
+export function hasAnyTag<T extends { data: { tags: string[] } }>(
+  events: T[],
+  tags: string[],
+): T[] {
+  const wanted = new Set(tags.map((t) => t.toLowerCase()));
+  return events.filter((e) => e.data.tags.some((t) => wanted.has(t.toLowerCase())));
+}

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { splitEvents } from './event-utils';
+import { splitEvents, hasAnyTag, CAMP_TAGS } from './event-utils';
 
 const ev = (iso: string) => ({ data: { date: new Date(iso) } });
 
@@ -18,5 +18,14 @@ describe('splitEvents', () => {
     const { upcoming, past } = splitEvents(events, now);
     expect(upcoming.map((e) => e.data.date.toISOString().slice(0, 10))).toEqual(['2026-07-01', '2026-08-01']);
     expect(past.map((e) => e.data.date.toISOString().slice(0, 10))).toEqual(['2026-03-01', '2026-01-01']);
+  });
+});
+
+describe('hasAnyTag', () => {
+  const tagged = (...tags: string[]) => ({ data: { tags } });
+
+  it('keeps events with any matching tag, case-insensitively', () => {
+    const events = [tagged('營隊'), tagged('camp', 'Workshop'), tagged('Meetup'), tagged()];
+    expect(hasAnyTag(events, CAMP_TAGS)).toEqual([events[0], events[1]]);
   });
 });
