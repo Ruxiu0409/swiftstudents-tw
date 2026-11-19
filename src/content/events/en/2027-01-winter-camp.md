@@ -3,8 +3,7 @@ title: "Asia Student App Challenge Winter Camp"
 date: 2027-01-26
 endDate: 2027-01-28
 location: "Apple Regional Training Center"
-summary: "A three-day in-person iOS workshop: talks, a hands-on workshop, a Codex for iOS build day, and a final showcase."
-expectedAttendees: 62
+summary: "A three-day in-person iOS workshop: talks, a hands-on workshop, an Exchange Workshop build day, and a final showcase."
 registerUrl: "https://luma.com/9yffmtpm"
 artwork: "asac-tw"
 tags: ["Camp"]
@@ -25,11 +24,11 @@ Three days of talks, hands-on building, and a final showcase — turn your idea 
 | 16:00 – 16:15 | Q&A |
 | 16:15 – 17:45 | Hands-on workshop (introduced by 瑞瑞) |
 
-## ![](/camps/asac/ww.checkins.webp) Day 2 · Wed, Jan 27 — Codex for iOS Workshop
+## ![](/camps/asac/ww.checkins.webp) Day 2 · Wed, Jan 27 — Exchange Workshop
 
 | Time | Session |
 | --- | --- |
-| All day – 21:00 | Codex for iOS Workshop: open building time |
+| All day – 21:00 | Exchange Workshop: open building time |
 
 ## ![](/camps/asac/ww.celebration.webp) Day 3 · Thu, Jan 28 — Showcase
 
@@ -47,5 +46,5 @@ Three days of talks, hands-on building, and a final showcase — turn your idea 
 
 ## ![](/camps/asac/ww.support.webp) Good to know
 
-- Meals are not provided on any day — please bring or buy your own.
-- Accommodation is not provided; if you're coming from out of town, please arrange your own.
+- Meals are not provided on any day. Bring cash to order food on site, or buy your own.
+- Accommodation is not provided. If you're coming from out of town, please arrange your own; contact the organizers if you need help.

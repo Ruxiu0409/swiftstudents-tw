@@ -3,8 +3,7 @@ title: "Asia Student App Challenge Winter Camp"
 date: 2027-01-26
 endDate: 2027-01-28
 location: "逢甲大學蘋果區教育培訓中心"
-summary: "三天的 iOS 開發實體工作坊：講者分享、動手做 Workshop、Codex for iOS 實作日，最後一天上台發表成果。"
-expectedAttendees: 62
+summary: "三天的 iOS 開發實體工作坊：講者分享、動手做 Workshop、Exchange Workshop 實作日，最後一天上台發表成果。"
 registerUrl: "https://luma.com/9yffmtpm"
 artwork: "asac-tw"
 tags: ["營隊"]
@@ -25,11 +24,11 @@ tags: ["營隊"]
 | 16:00 – 16:15 | Q&A |
 | 16:15 – 17:45 | 動手做 Workshop（瑞瑞介紹） |
 
-## ![](/camps/asac/ww.checkins.webp) Day 2｜1 月 27 日（三）Codex for iOS Workshop
+## ![](/camps/asac/ww.checkins.webp) Day 2｜1 月 27 日（三）Exchange Workshop
 
 | 時間 | 內容 |
 | --- | --- |
-| 全天 – 21:00 | Codex for iOS Workshop：自由實作 |
+| 全天 – 21:00 | Exchange Workshop：自由實作 |
 
 ## ![](/camps/asac/ww.celebration.webp) Day 3｜1 月 28 日（四）成果發表
 
@@ -47,5 +46,5 @@ tags: ["營隊"]
 
 ## ![](/camps/asac/ww.support.webp) 注意事項
 
-- 三天皆不供餐，請自行準備餐點。
-- 不提供住宿，外地的同學請自行安排。
+- 三天皆不供餐，請自備零錢現場訂餐或自行購買。
+- 不提供住宿，外地的同學請自行安排，若需要協助，請聯絡主辦單位。

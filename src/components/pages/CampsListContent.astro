@@ -58,7 +58,10 @@ const heroDates = next && formatEventDate(next.data, lang === 'en' ? 'en-US' : '
               <p class="camp__summary">{entry.data.summary}</p>
             </div>
           )}
-          <EventInfo entry={entry} lang={lang} />
+          {/* The hero already shows date and location; only show the panel when it has more to say. */}
+          {!(artwork && entry === next && !entry.data.expectedAttendees && entry.data.staff.length === 0) && (
+            <EventInfo entry={entry} lang={lang} />
+          )}
           <EventProse entry={entry} />
         </article>
       ))}
