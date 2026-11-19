@@ -13,24 +13,30 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const camps = hasAnyTag(await getEventsByLang(lang), CAMP_TAGS);
 const { upcoming, past } = splitEvents(camps);
+// The next camp that takes registrations gets the button at the top of the page.
+const registerUrl = upcoming.find((e) => e.data.registerUrl)?.data.registerUrl;
 ---
 <Layout lang={lang} title={t('meta.camps_title')} description={t('meta.camps_desc')}>
   <section class="section">
     <div class="container">
-      <h1>{t('nav.camps')}</h1>
-      <p class="muted">{t('camps.intro')}</p>
+      <header class="intro">
+        <h1>{t('nav.camps')}</h1>
+        <p class="muted">{t('camps.intro')}</p>
+        {registerUrl && (
+          <a class="btn btn--register register" href={registerUrl}>{t('camps.register')}</a>
+        )}
+      </header>
 
       {upcoming.length === 0 && <p class="empty muted">{t('camps.empty')}</p>}
 
       {upcoming.map((entry) => (
         <article class="camp" aria-labelledby={`camp-${entry.id}`}>
-          <p class="camp__eyebrow">{t('camps.upcoming')}</p>
-          <h2 id={`camp-${entry.id}`} class="camp__title">{entry.data.title}</h2>
-          <p class="camp__summary">{entry.data.summary}</p>
+          <div class="camp__head">
+            <p class="camp__eyebrow">{t('camps.upcoming')}</p>
+            <h2 id={`camp-${entry.id}`} class="camp__title">{entry.data.title}</h2>
+            <p class="camp__summary">{entry.data.summary}</p>
+          </div>
           <EventInfo entry={entry} lang={lang} />
-          {entry.data.registerUrl && (
-            <a class="btn btn--primary camp__cta" href={entry.data.registerUrl}>{t('detail.register')}</a>
-          )}
           <EventProse entry={entry} />
         </article>
       ))}
@@ -47,12 +53,17 @@ const { upcoming, past } = splitEvents(camps);
   </section>
 </Layout>
 <style>
+  /* Center the page: headings centered, the schedule column centered with its text left-aligned for reading. */
+  .intro, .camp__head, .empty { text-align: center; }
+  .intro .muted { margin-top: 0.5rem; }
   .empty { padding-block: var(--space-4); }
-  .camp { max-width: 720px; margin-top: var(--space-8); }
+  .camp { max-width: 720px; margin: var(--space-8) auto 0; }
   .camp__eyebrow { color: var(--color-accent); font-size: var(--fs-small); font-weight: 600; }
   .camp__title { margin-top: 0.5rem; }
   .camp__summary { margin-top: var(--space-2); }
-  .camp__cta { margin-top: var(--space-3); }
+  .register { margin-top: var(--space-3); }
+  .group { text-align: center; }
+  .group .list { text-align: left; }
   .group { margin-top: var(--space-8); scroll-margin-top: 80px; }
   .list { margin-top: var(--space-4); }
 </style>

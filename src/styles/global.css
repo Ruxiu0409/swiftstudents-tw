@@ -66,6 +66,13 @@ p { margin: 0; }
 }
 .btn--primary { background: var(--color-accent); color: #fff; }
 .btn--primary:hover { background: var(--color-accent-hover); }
+.btn--register {
+  /* Matches the 立即報名 button on appchallenge.asia/tw */
+  background: #0a84ff; color: #fff;
+  font-size: 1rem; font-weight: 400; line-height: 1.25; padding: 7px 12px;
+}
+.btn--register:hover { background: #0077ed; }
+.btn--register:focus-visible { outline-color: #0a84ff; outline-offset: 4px; border-radius: var(--radius-pill); }
 .btn--ghost { border-color: var(--color-border); color: var(--color-text); }
 .btn--ghost:hover { border-color: var(--color-text); }
 

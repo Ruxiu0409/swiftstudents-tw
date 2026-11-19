@@ -1,10 +1,11 @@
 ---
-title: "Swift Students Taiwan 寒假營隊"
+title: "Asia Student App Challenge Winter Camp"
 date: 2027-01-26
 endDate: 2027-01-28
 location: "逢甲大學蘋果區教育培訓中心"
 summary: "三天的 iOS 開發實體工作坊：講者分享、動手做 Workshop、Codex for iOS 實作日，最後一天上台發表成果。"
 expectedAttendees: 62
+registerUrl: "https://luma.com/9yffmtpm"
 tags: ["營隊"]
 ---
 

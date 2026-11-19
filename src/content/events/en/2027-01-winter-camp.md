@@ -1,10 +1,11 @@
 ---
-title: "Swift Students Taiwan Winter Camp"
+title: "Asia Student App Challenge Winter Camp"
 date: 2027-01-26
 endDate: 2027-01-28
 location: "Apple Regional Training Center"
 summary: "A three-day in-person iOS workshop: talks, a hands-on workshop, a Codex for iOS build day, and a final showcase."
 expectedAttendees: 62
+registerUrl: "https://luma.com/9yffmtpm"
 tags: ["Camp"]
 ---
 
