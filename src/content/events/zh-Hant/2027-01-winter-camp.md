@@ -39,6 +39,12 @@ tags: ["營隊"]
 | 14:00 – 16:30 | 成果發表 |
 | 16:30 起 | 頒獎、閉幕、大合照 |
 
+## ![](/camps/asac/ww.graduationcap.webp) 講者
+
+- **東東**：2024 年 Swift Student Challenge 得獎者，得獎作品《SimPOS》是給小店家用的收銀 App，用 SwiftUI 和 SwiftData 寫成。政大資管系畢業，現在是 LINE 的 iOS 實習生。[個人網站](https://dongdong867.dev)
+- **Kyle**：介紹待補
+- **k66**：介紹待補
+
 ## ![](/camps/asac/ww.support.webp) 注意事項
 
 - 三天皆不供餐，請自行準備餐點。

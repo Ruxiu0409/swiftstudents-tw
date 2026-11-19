@@ -39,6 +39,12 @@ Three days of talks, hands-on building, and a final showcase — turn your idea 
 | 14:00 – 16:30 | Project showcase |
 | From 16:30 | Awards, closing, group photo |
 
+## ![](/camps/asac/ww.graduationcap.webp) Speakers
+
+- **東東 (Dong)**: 2024 Swift Student Challenge winner. His winning app, SimPOS, is a point-of-sale app for small shops built with SwiftUI and SwiftData. He studied Management Information Systems at National Chengchi University and is now an iOS intern at LINE. [Website](https://dongdong867.dev)
+- **Kyle**: bio coming soon
+- **k66**: bio coming soon
+
 ## ![](/camps/asac/ww.support.webp) Good to know
 
 - Meals are not provided on any day — please bring or buy your own.
