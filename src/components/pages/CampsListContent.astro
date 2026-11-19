@@ -3,8 +3,9 @@ import Layout from '../../layouts/Layout.astro';
 import EventList from '../EventList.astro';
 import EventInfo from '../EventInfo.astro';
 import EventProse from '../EventProse.astro';
+import CampHero from '../CampHero.astro';
 import { getEventsByLang } from '../../lib/events';
-import { splitEvents, hasAnyTag, CAMP_TAGS } from '../../lib/event-utils';
+import { splitEvents, hasAnyTag, CAMP_TAGS, formatEventDate } from '../../lib/event-utils';
 import { useTranslations } from '../../i18n/utils';
 import type { Lang } from '../../i18n/ui';
 
@@ -13,29 +14,50 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 const camps = hasAnyTag(await getEventsByLang(lang), CAMP_TAGS);
 const { upcoming, past } = splitEvents(camps);
-// The next camp that takes registrations gets the button at the top of the page.
+// The next camp leads the page; if it has artwork, the page takes its hero and dark theme.
+const next = upcoming[0];
+const artwork = next?.data.artwork;
 const registerUrl = upcoming.find((e) => e.data.registerUrl)?.data.registerUrl;
+const heroDates = next && formatEventDate(next.data, lang === 'en' ? 'en-US' : 'zh-TW', {
+  year: 'numeric', month: 'long', day: 'numeric',
+});
 ---
-<Layout lang={lang} title={t('meta.camps_title')} description={t('meta.camps_desc')}>
+<Layout lang={lang} title={t('meta.camps_title')} description={t('meta.camps_desc')} theme={artwork ? 'dark' : 'light'}>
   <section class="section">
     <div class="container">
-      <header class="intro">
-        <h1>{t('nav.camps')}</h1>
-        <p class="muted">{t('camps.intro')}</p>
-        {registerUrl && (
-          <a class="btn btn--register register" href={registerUrl}>{t('camps.register')}</a>
-        )}
-      </header>
+      {artwork && next ? (
+        <CampHero
+          title={next.data.title}
+          summary={next.data.summary}
+          dates={heroDates!}
+          location={next.data.location}
+          registerUrl={registerUrl}
+          registerLabel={t('camps.register')}
+          logoAlt={t('camps.asac_logo_alt')}
+        />
+      ) : (
+        <header class="intro">
+          <h1>{t('nav.camps')}</h1>
+          <p class="muted">{t('camps.intro')}</p>
+          {registerUrl && (
+            <a class="btn btn--register register" href={registerUrl}>{t('camps.register')}</a>
+          )}
+        </header>
+      )}
 
       {upcoming.length === 0 && <p class="empty muted">{t('camps.empty')}</p>}
 
       {upcoming.map((entry) => (
         <article class="camp" aria-labelledby={`camp-${entry.id}`}>
-          <div class="camp__head">
-            <p class="camp__eyebrow">{t('camps.upcoming')}</p>
-            <h2 id={`camp-${entry.id}`} class="camp__title">{entry.data.title}</h2>
-            <p class="camp__summary">{entry.data.summary}</p>
-          </div>
+          {artwork && entry === next ? (
+            <h2 id={`camp-${entry.id}`} class="sr-only">{entry.data.title}</h2>
+          ) : (
+            <div class="camp__head">
+              <p class="camp__eyebrow">{t('camps.upcoming')}</p>
+              <h2 id={`camp-${entry.id}`} class="camp__title">{entry.data.title}</h2>
+              <p class="camp__summary">{entry.data.summary}</p>
+            </div>
+          )}
           <EventInfo entry={entry} lang={lang} />
           <EventProse entry={entry} />
         </article>
@@ -58,6 +80,7 @@ const registerUrl = upcoming.find((e) => e.data.registerUrl)?.data.registerUrl;
   .intro .muted { margin-top: 0.5rem; }
   .empty { padding-block: var(--space-4); }
   .camp { max-width: 720px; margin: var(--space-8) auto 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .camp__eyebrow { color: var(--color-accent); font-size: var(--fs-small); font-weight: 600; }
   .camp__title { margin-top: 0.5rem; }
   .camp__summary { margin-top: var(--space-2); }

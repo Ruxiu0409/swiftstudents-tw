@@ -26,6 +26,8 @@ const events = defineCollection({
     expectedAttendees: z.number().int().positive().optional(),
     /** Organizing team, e.g. { role: '總召', name: '…' }; grouped by role in the event info. */
     staff: z.array(z.object({ role: z.string(), name: z.string() })).default([]),
+    /** Hand-drawn hero artwork shown on the camps page; also switches the page to the dark theme. */
+    artwork: z.enum(['asac-tw']).optional(),
   }),
 });
 

@@ -6,12 +6,13 @@ location: "逢甲大學蘋果區教育培訓中心"
 summary: "三天的 iOS 開發實體工作坊：講者分享、動手做 Workshop、Codex for iOS 實作日，最後一天上台發表成果。"
 expectedAttendees: 62
 registerUrl: "https://luma.com/9yffmtpm"
+artwork: "asac-tw"
 tags: ["營隊"]
 ---
 
 三天從聽講、動手做到上台發表，和來自各校的同學一起把點子做成 App。
 
-## Day 1｜1 月 26 日（二）講座與 Workshop
+## ![](/camps/asac/ww.kickoff.webp) Day 1｜1 月 26 日（二）講座與 Workshop
 
 | 時間 | 內容 |
 | --- | --- |
@@ -24,13 +25,13 @@ tags: ["營隊"]
 | 16:00 – 16:15 | Q&A |
 | 16:15 – 17:45 | 動手做 Workshop（瑞瑞介紹） |
 
-## Day 2｜1 月 27 日（三）Codex for iOS Workshop
+## ![](/camps/asac/ww.checkins.webp) Day 2｜1 月 27 日（三）Codex for iOS Workshop
 
 | 時間 | 內容 |
 | --- | --- |
 | 全天 – 21:00 | Codex for iOS Workshop：自由實作 |
 
-## Day 3｜1 月 28 日（四）成果發表
+## ![](/camps/asac/ww.celebration.webp) Day 3｜1 月 28 日（四）成果發表
 
 | 時間 | 內容 |
 | --- | --- |
@@ -38,7 +39,7 @@ tags: ["營隊"]
 | 14:00 – 16:30 | 成果發表 |
 | 16:30 起 | 頒獎、閉幕、大合照 |
 
-## 注意事項
+## ![](/camps/asac/ww.support.webp) 注意事項
 
 - 三天皆不供餐，請自行準備餐點。
 - 不提供住宿，外地的同學請自行安排。

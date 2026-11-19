@@ -12,6 +12,11 @@ const { Content } = await render(Astro.props.entry);
   .prose { margin-top: var(--space-4); }
   .prose :global(p) { margin-block: var(--space-2); }
   .prose :global(h2) { font-size: var(--fs-h3); margin-top: var(--space-4); }
+  /* Hand-drawn icon placed at the start of a heading, e.g. ## ![](/camps/asac/ww.kickoff.webp) Day 1 */
+  .prose :global(h2 img) {
+    display: inline-block; width: 2.25em; height: 2.25em; object-fit: contain;
+    vertical-align: middle; margin: -0.25em 0.25em -0.25em -0.25em;
+  }
   .prose :global(h3) { margin-top: var(--space-3); }
   .prose :global(ul) { margin-block: var(--space-2); padding-left: 1.25rem; }
   .prose :global(li + li) { margin-top: 0.25rem; }

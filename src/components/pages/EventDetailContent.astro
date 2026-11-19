@@ -16,7 +16,7 @@ const camp = isCamp(entry);
 const backPath = localizePath(camp ? '/camps' : '/events', lang) + (isUpcoming ? '' : '#past');
 const backLabel = t(camp ? 'detail.back_camps' : 'detail.back_events');
 ---
-<Layout lang={lang} title={`${entry.data.title} · ${SITE.name}`} description={entry.data.summary}>
+<Layout lang={lang} title={`${entry.data.title} · ${SITE.name}`} description={entry.data.summary} theme={entry.data.artwork ? 'dark' : 'light'}>
   <article class="section">
     <div class="container article">
       <a class="link-accent" href={backPath}>← {backLabel}</a>

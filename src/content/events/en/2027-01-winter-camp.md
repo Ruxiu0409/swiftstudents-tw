@@ -6,12 +6,13 @@ location: "Apple Regional Training Center"
 summary: "A three-day in-person iOS workshop: talks, a hands-on workshop, a Codex for iOS build day, and a final showcase."
 expectedAttendees: 62
 registerUrl: "https://luma.com/9yffmtpm"
+artwork: "asac-tw"
 tags: ["Camp"]
 ---
 
 Three days of talks, hands-on building, and a final showcase — turn your idea into an app alongside students from schools across Taiwan.
 
-## Day 1 · Tue, Jan 26 — Talks & Workshop
+## ![](/camps/asac/ww.kickoff.webp) Day 1 · Tue, Jan 26 — Talks & Workshop
 
 | Time | Session |
 | --- | --- |
@@ -24,13 +25,13 @@ Three days of talks, hands-on building, and a final showcase — turn your idea 
 | 16:00 – 16:15 | Q&A |
 | 16:15 – 17:45 | Hands-on workshop (introduced by 瑞瑞) |
 
-## Day 2 · Wed, Jan 27 — Codex for iOS Workshop
+## ![](/camps/asac/ww.checkins.webp) Day 2 · Wed, Jan 27 — Codex for iOS Workshop
 
 | Time | Session |
 | --- | --- |
 | All day – 21:00 | Codex for iOS Workshop: open building time |
 
-## Day 3 · Thu, Jan 28 — Showcase
+## ![](/camps/asac/ww.celebration.webp) Day 3 · Thu, Jan 28 — Showcase
 
 | Time | Session |
 | --- | --- |
@@ -38,7 +39,7 @@ Three days of talks, hands-on building, and a final showcase — turn your idea 
 | 14:00 – 16:30 | Project showcase |
 | From 16:30 | Awards, closing, group photo |
 
-## Good to know
+## ![](/camps/asac/ww.support.webp) Good to know
 
 - Meals are not provided on any day — please bring or buy your own.
 - Accommodation is not provided; if you're coming from out of town, please arrange your own.

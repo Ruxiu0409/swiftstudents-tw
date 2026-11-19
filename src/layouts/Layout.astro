@@ -11,8 +11,10 @@ interface Props {
   title: string;
   description: string;
   image?: string;
+  /** 'dark' switches the whole page, header and footer included, to the dark palette. */
+  theme?: 'light' | 'dark';
 }
-const { lang, title, description, image } = Astro.props;
+const { lang, title, description, image, theme = 'light' } = Astro.props;
 const t = useTranslations(lang);
 
 const abs = (path: string) => new URL(path, SITE.url).href.replace(/\/$/, '') || SITE.url;
@@ -24,7 +26,7 @@ const htmlLang = lang === 'en' ? 'en' : 'zh-Hant';
 const ogImage = new URL(image ?? '/og-default.jpg', SITE.url).href;
 ---
 <!doctype html>
-<html lang={htmlLang}>
+<html lang={htmlLang} data-theme={theme === 'dark' ? 'dark' : undefined}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
